@@ -53,6 +53,9 @@ All configuration options are handled via environment variables
 | `PN_SSB3DS_ACCOUNT_GRPC_HOST` | Host name for your account server gRPC service | Yes |
 | `PN_SSB3DS_ACCOUNT_GRPC_PORT` | Port for your account server gRPC service | Yes |
 | `PN_SSB3DS_ACCOUNT_GRPC_API_KEY` | API key for your account server gRPC service | No (Assumed to be an open gRPC API) |
+| `PN_SSB3DS_FRIENDS_GRPC_HOST` | Host name for your friends server gRPC service | Yes |
+| `PN_SSB3DS_FRIENDS_GRPC_PORT` | Port for your friends server gRPC service | Yes |
+| `PN_SSB3DS_FRIENDS_GRPC_API_KEY` | API key for your friends server gRPC service | No (Assumed to be an open gRPC API) |
 | `PN_SSB3DS_DATASTORE_S3BUCKET` | Name of S3 bucket for DataStore storage | Yes |
 | `PN_SSB3DS_DATASTORE_S3KEY` | Access key for S3 service | Yes |
 | `PN_SSB3DS_DATASTORE_S3SECRET` | Access secret for S3 service | Yes |

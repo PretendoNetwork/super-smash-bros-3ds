@@ -18,6 +18,7 @@ import (
 	nat_traversal "github.com/PretendoNetwork/nex-protocols-go/v2/nat-traversal"
 	secure "github.com/PretendoNetwork/nex-protocols-go/v2/secure-connection"
 	"github.com/PretendoNetwork/super-smash-bros-3ds/database"
+	"github.com/PretendoNetwork/super-smash-bros-3ds/globals"
 	local_globals "github.com/PretendoNetwork/super-smash-bros-3ds/globals"
 
 	nex_matchmake_extension_common "github.com/PretendoNetwork/super-smash-bros-3ds/nex/matchmake-extension/common"
@@ -32,6 +33,7 @@ func registerCommonSecureServerProtocols() {
 	}
 
 	matchmakingManager := common_globals.NewMatchmakingManager(local_globals.SecureEndpoint, database.Postgres)
+	matchmakingManager.GetUserFriendPIDs = globals.GetUserFriendPids
 
 	natTraversalProtocol := nat_traversal.NewProtocol()
 	local_globals.SecureEndpoint.RegisterServiceProtocol(natTraversalProtocol)
