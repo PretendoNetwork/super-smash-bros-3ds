@@ -44,19 +44,21 @@ All configuration options are handled via environment variables
 
 `.env` files are supported
 
-| Name | Description | Required |
-| ---- | ----------- | -------- |
-| `PN_SSB3DS_POSTGRES_URI` | Fully qualified URI to your Postgres server (Example `postgres://username:password@localhost/ssb3ds?sslmode=disable`) | Yes |
-| `PN_SSB3DS_AUTHENTICATION_SERVER_PORT` | Port for the authentication server | Yes |
-| `PN_SSB3DS_SECURE_SERVER_HOST` | Host name for the secure server (should point to the same address as the authentication server) | Yes |
-| `PN_SSB3DS_SECURE_SERVER_PORT` | Port for the secure server | Yes |
-| `PN_SSB3DS_ACCOUNT_GRPC_HOST` | Host name for your account server gRPC service | Yes |
-| `PN_SSB3DS_ACCOUNT_GRPC_PORT` | Port for your account server gRPC service | Yes |
-| `PN_SSB3DS_ACCOUNT_GRPC_API_KEY` | API key for your account server gRPC service | No (Assumed to be an open gRPC API) |
-| `PN_SSB3DS_FRIENDS_GRPC_HOST` | Host name for your friends server gRPC service | Yes |
-| `PN_SSB3DS_FRIENDS_GRPC_PORT` | Port for your friends server gRPC service | Yes |
-| `PN_SSB3DS_FRIENDS_GRPC_API_KEY` | API key for your friends server gRPC service | No (Assumed to be an open gRPC API) |
-| `PN_SSB3DS_DATASTORE_S3BUCKET` | Name of S3 bucket for DataStore storage | Yes |
-| `PN_SSB3DS_DATASTORE_S3KEY` | Access key for S3 service | Yes |
-| `PN_SSB3DS_DATASTORE_S3SECRET` | Access secret for S3 service | Yes |
-| `PN_SSB3DS_DATASTORE_S3URL` | URL to reach S3 service | Yes |
+| Name                                   | Description                                                                                                           | Required                            |
+|----------------------------------------|-----------------------------------------------------------------------------------------------------------------------|-------------------------------------|
+| `PN_SSB3DS_POSTGRES_URI`               | Fully qualified URI to your Postgres server (Example `postgres://username:password@localhost/ssb3ds?sslmode=disable`) | Yes                                 |
+| `PN_SSB3DS_AUTHENTICATION_SERVER_PORT` | Port for the authentication server                                                                                    | Yes                                 |
+| `PN_SSB3DS_SECURE_SERVER_HOST`         | Host name for the secure server (should point to the same address as the authentication server)                       | Yes                                 |
+| `PN_SSB3DS_SECURE_SERVER_PORT`         | Port for the secure server                                                                                            | Yes                                 |
+| `PN_SSB3DS_ACCOUNT_GRPC_HOST`          | Host name for your account server gRPC service                                                                        | Yes                                 |
+| `PN_SSB3DS_ACCOUNT_GRPC_PORT`          | Port for your account server gRPC service                                                                             | Yes                                 |
+| `PN_SSB3DS_ACCOUNT_GRPC_API_KEY`       | API key for your account server gRPC service                                                                          | No (Assumed to be an open gRPC API) |
+| `PN_SSB3DS_FRIENDS_GRPC_HOST`          | Host name for your friends server gRPC service                                                                        | Yes                                 |
+| `PN_SSB3DS_FRIENDS_GRPC_PORT`          | Port for your friends server gRPC service                                                                             | Yes                                 |
+| `PN_SSB3DS_FRIENDS_GRPC_API_KEY`       | API key for your friends server gRPC service                                                                          | No (Assumed to be an open gRPC API) |
+| `PN_SSB3DS_DATASTORE_S3BUCKET`         | Name of S3 bucket for DataStore storage                                                                               | Yes                                 |
+| `PN_SSB3DS_DATASTORE_S3KEY`            | Access key for S3 service                                                                                             | Yes                                 |
+| `PN_SSB3DS_DATASTORE_S3SECRET`         | Access secret for S3 service                                                                                          | Yes                                 |
+| `PN_SSB3DS_DATASTORE_S3URL`            | URL to reach S3 service                                                                                               | Yes                                 |
+| `PN_SSB3DS_AES_KEY`                    | AES key for token decryption                                                                                          | Yes (unless local auth used)        |
+| `PN_SSB3DS_LOCAL_AUTH`                 | Whether to read NEX keys from a local settings.json file (insecure!)                                                  | No (Assumed false)                  |

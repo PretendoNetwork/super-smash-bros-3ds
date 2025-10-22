@@ -1,18 +1,19 @@
 module github.com/PretendoNetwork/super-smash-bros-3ds
 
-go 1.23.0
+go 1.24.0
 
-toolchain go1.23.3
+toolchain go1.24.9
 
 require (
-	github.com/PretendoNetwork/grpc-go v1.0.2
-	github.com/PretendoNetwork/nex-go/v2 v2.1.2
-	github.com/PretendoNetwork/nex-protocols-common-go/v2 v2.2.2
-	github.com/PretendoNetwork/nex-protocols-go/v2 v2.2.0
-	github.com/PretendoNetwork/plogger-go v1.0.4
+	github.com/PretendoNetwork/grpc/go v0.0.0-20251019160848-fdcd0cd56280
+	github.com/PretendoNetwork/nex-go/v2 v2.1.5
+	github.com/PretendoNetwork/nex-protocols-common-go/v2 v2.4.1-0.20251022114747-9f63a724aab8
+	github.com/PretendoNetwork/nex-protocols-go/v2 v2.2.2-0.20250908132726-4a71a019af39
+	github.com/PretendoNetwork/plogger-go v1.1.0
 	github.com/joho/godotenv v1.5.1
-	github.com/minio/minio-go/v7 v7.0.83
-	google.golang.org/grpc v1.63.0
+	github.com/lib/pq v1.10.9
+	github.com/minio/minio-go/v7 v7.0.95
+	google.golang.org/grpc v1.76.0
 )
 
 require (
@@ -21,27 +22,28 @@ require (
 	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/fatih/color v1.18.0 // indirect
 	github.com/go-ini/ini v1.67.0 // indirect
-	github.com/goccy/go-json v0.10.4 // indirect
-	github.com/golang/protobuf v1.5.4 // indirect
+	github.com/goccy/go-json v0.10.5 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/jwalton/go-supportscolor v1.2.0 // indirect
-	github.com/klauspost/compress v1.17.11 // indirect
-	github.com/klauspost/cpuid/v2 v2.2.9 // indirect
-	github.com/lib/pq v1.10.9 // indirect
-	github.com/lxzan/gws v1.8.8 // indirect
+	github.com/klauspost/compress v1.18.1 // indirect
+	github.com/klauspost/cpuid/v2 v2.3.0 // indirect
+	github.com/lxzan/gws v1.8.9 // indirect
 	github.com/mattn/go-colorable v0.1.14 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
+	github.com/minio/crc64nvme v1.1.1 // indirect
 	github.com/minio/md5-simd v1.1.2 // indirect
+	github.com/philhofer/fwd v1.2.0 // indirect
 	github.com/rasky/go-lzo v0.0.0-20200203143853-96a758eda86e // indirect
 	github.com/rs/xid v1.6.0 // indirect
 	github.com/superwhiskers/crunch/v3 v3.5.7 // indirect
-	golang.org/x/crypto v0.31.0 // indirect
-	golang.org/x/exp v0.0.0-20250215185904-eff6e970281f // indirect
-	golang.org/x/mod v0.23.0 // indirect
-	golang.org/x/net v0.33.0 // indirect
-	golang.org/x/sys v0.30.0 // indirect
-	golang.org/x/term v0.29.0 // indirect
-	golang.org/x/text v0.21.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240401170217-c3f982113cda // indirect
-	google.golang.org/protobuf v1.33.0 // indirect
+	github.com/tinylib/msgp v1.4.0 // indirect
+	golang.org/x/crypto v0.43.0 // indirect
+	golang.org/x/exp v0.0.0-20251017212417-90e834f514db // indirect
+	golang.org/x/mod v0.29.0 // indirect
+	golang.org/x/net v0.46.0 // indirect
+	golang.org/x/sys v0.37.0 // indirect
+	golang.org/x/term v0.36.0 // indirect
+	golang.org/x/text v0.30.0 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20251020155222-88f65dc88635 // indirect
+	google.golang.org/protobuf v1.36.10 // indirect
 )

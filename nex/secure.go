@@ -5,7 +5,7 @@ import (
 	"os"
 	"strconv"
 
-	nex "github.com/PretendoNetwork/nex-go/v2"
+	"github.com/PretendoNetwork/nex-go/v2"
 	"github.com/PretendoNetwork/super-smash-bros-3ds/globals"
 )
 
@@ -29,7 +29,11 @@ func StartSecureServer() {
 		fmt.Println("=== SSB3DS - Secure ===")
 		fmt.Printf("Protocol ID: %d\n", request.ProtocolID)
 		fmt.Printf("Method ID: %d\n", request.MethodID)
-		fmt.Println("====================")
+		fmt.Println("=======================")
+	})
+
+	globals.SecureEndpoint.OnError(func(err *nex.Error) {
+		globals.Logger.Errorf("Secure: %v", err)
 	})
 
 	registerCommonSecureServerProtocols()

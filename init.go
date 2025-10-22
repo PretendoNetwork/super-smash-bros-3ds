@@ -2,13 +2,14 @@ package main
 
 import (
 	"crypto/rand"
+	"encoding/hex"
 	"fmt"
 	"os"
 	"strconv"
 	"strings"
 
-	pb_account "github.com/PretendoNetwork/grpc-go/account"
-	pb_friends "github.com/PretendoNetwork/grpc-go/friends"
+	pb_account "github.com/PretendoNetwork/grpc/go/account"
+	pb_friends "github.com/PretendoNetwork/grpc/go/friends"
 	"github.com/PretendoNetwork/nex-go/v2"
 	"github.com/PretendoNetwork/nex-go/v2/types"
 	"github.com/PretendoNetwork/plogger-go"
@@ -47,6 +48,8 @@ func init() {
 	friendsGRPCHost := os.Getenv("PN_SSB3DS_FRIENDS_GRPC_HOST")
 	friendsGRPCPort := os.Getenv("PN_SSB3DS_FRIENDS_GRPC_PORT")
 	friendsGRPCAPIKey := os.Getenv("PN_SSB3DS_FRIENDS_GRPC_API_KEY")
+	tokenAesKey := os.Getenv("PN_SSB3DS_AES_KEY")
+	localAuthMode := os.Getenv("PN_SSB3DS_LOCAL_AUTH")
 
 	if strings.TrimSpace(postgresURI) == "" {
 		globals.Logger.Error("PN_SSB3DS_POSTGRES_URI environment variable not set")
@@ -62,8 +65,8 @@ func init() {
 
 	globals.KerberosPassword = string(kerberosPassword)
 
-	globals.AuthenticationServerAccount = nex.NewAccount(types.NewPID(1), "Quazal Authentication", globals.KerberosPassword)
-	globals.SecureServerAccount = nex.NewAccount(types.NewPID(2), "Quazal Rendez-Vous", globals.KerberosPassword)
+	globals.AuthenticationServerAccount = nex.NewAccount(types.NewPID(1), "Quazal Authentication", globals.KerberosPassword, false)
+	globals.SecureServerAccount = nex.NewAccount(types.NewPID(2), "Quazal Rendez-Vous", globals.KerberosPassword, false)
 
 	if strings.TrimSpace(authenticationServerPort) == "" {
 		globals.Logger.Error("PN_SSB3DS_AUTHENTICATION_SERVER_PORT environment variable not set")
@@ -196,4 +199,21 @@ func init() {
 	globals.Presigner = globals.NewS3Presigner(globals.MinIOClient)
 
 	database.ConnectPostgres()
+
+	if strings.TrimSpace(tokenAesKey) == "" {
+		globals.Logger.Error("PN_SSBWIIU_AES_KEY not set!")
+		os.Exit(0)
+	}
+
+	globals.TokenAESKey, err = hex.DecodeString(tokenAesKey)
+	if err != nil {
+		globals.Logger.Errorf("Failed to decode AES key: %v", err)
+		os.Exit(0)
+	}
+
+	globals.LocalAuthMode = localAuthMode == "1"
+	if globals.LocalAuthMode {
+		globals.Logger.Warning("Local authentication mode is enabled. Token validation will be skipped!")
+		globals.Logger.Warning("This is insecure and could allow ban bypasses!")
+	}
 }
