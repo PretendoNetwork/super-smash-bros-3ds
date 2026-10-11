@@ -15,7 +15,7 @@ $ cd super-smash-bros-3ds
 To compile using Go, `go get` the required modules and then `go build` to your desired location. You may also want to tidy the go modules, though this is optional
 
 ```bash
-$ go get -u
+$ go get
 $ go mod tidy
 $ go build -o build/super-smash-bros-3ds
 ```
@@ -61,3 +61,4 @@ All configuration options are handled via environment variables
 | `PN_SSB3DS_DATASTORE_S3SECRET`         | Access secret for S3 service                                                                                          | Yes                                 |
 | `PN_SSB3DS_DATASTORE_S3URL`            | URL to reach S3 service                                                                                               | Yes                                 |
 | `PN_SSB3DS_LOCAL_AUTH`                 | Whether to read NEX keys from a local settings.json file (insecure!)                                                  | No (Assumed false)                  |
+| `PN_SSB3DS_HEALTH_CHECK_PORT`          | Port for the UDP health check                                                                                       | No

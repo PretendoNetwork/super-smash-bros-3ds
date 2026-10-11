@@ -48,6 +48,7 @@ func init() {
 	friendsGRPCPort := os.Getenv("PN_SSB3DS_FRIENDS_GRPC_PORT")
 	friendsGRPCAPIKey := os.Getenv("PN_SSB3DS_FRIENDS_GRPC_API_KEY")
 	localAuthMode := os.Getenv("PN_SSB3DS_LOCAL_AUTH")
+	healthCheckPort := os.Getenv("PN_SSB3DS_HEALTH_CHECK_PORT")
 
 	if strings.TrimSpace(postgresURI) == "" {
 		globals.Logger.Error("PN_SSB3DS_POSTGRES_URI environment variable not set")
@@ -194,5 +195,17 @@ func init() {
 	if globals.LocalAuthMode {
 		globals.Logger.Warning("Local authentication mode is enabled. Token validation will be skipped!")
 		globals.Logger.Warning("This is insecure and could allow ban bypasses!")
+	}
+
+	if strings.TrimSpace(healthCheckPort) == "" {
+		globals.Logger.Warning("Basic UDP health check will not be enabled. PN_SSB3DS_HEALTH_CHECK_PORT environment variable not set")
+	} else if port, err := strconv.Atoi(healthCheckPort); err != nil {
+		globals.Logger.Errorf("PN_SSB3DS_HEALTH_CHECK_PORT is not a valid port. Expected 0-65535, got %s", healthCheckPort)
+		os.Exit(0)
+	} else if port < 0 || port > 65535 {
+		globals.Logger.Errorf("PN_SSB3DS_HEALTH_CHECK_PORT is not a valid port. Expected 0-65535, got %s", healthCheckPort)
+		os.Exit(0)
+	} else {
+		nex.EnableBasicUDPHealthCheck(port)
 	}
 }
